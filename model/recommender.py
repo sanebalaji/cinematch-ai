@@ -9,17 +9,28 @@ import re
 import pickle
 from rapidfuzz import process
 from pathlib import Path
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 from model.tmdb import fetch_complete_movie
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load processed movie data
 movies = pickle.load(
     open(BASE_DIR / "artifacts" / "movies.pkl", "rb")
 )
 
-similarity = pickle.load(
-    open(BASE_DIR / "artifacts" / "similarity.pkl", "rb")
+# Generate similarity matrix dynamically
+cv = CountVectorizer(
+    max_features=5000,
+    stop_words="english"
 )
+
+vectors = cv.fit_transform(
+    movies["tags"].fillna("")
+)
+
+similarity = cosine_similarity(vectors)
 
 
 def normalize_title(title):
@@ -63,7 +74,9 @@ def recommend(movie):
         movies["title"] == matched_title
     ].index[0]
 
-    distance = list(enumerate(similarity[movie_index]))
+    distance = list(
+        enumerate(similarity[movie_index])
+    )
 
     distance = sorted(
         distance,
@@ -71,12 +84,11 @@ def recommend(movie):
         reverse=True
     )
 
-    print(f"\nRecommendations for: {movies.iloc[movie_index].title}\n")
-
     recommendations = []
+
     TOP_K = 5
 
-    for i in distance[1:TOP_K+1]:
+    for i in distance[1:TOP_K + 1]:
 
         movie_title = movies.iloc[i[0]].title
 
@@ -86,3 +98,5 @@ def recommend(movie):
             recommendations.append(movie_data)
 
     return matched_title, recommendations
+
+
