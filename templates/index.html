@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+    <title>CineMatch AI</title>
+</head>
+<body>
+    <div class="hero">
+    <h1>
+        CineMatch <span>AI</span>
+    </h1>
+    <p>
+        Discover movies you'll love with intelligent recommendations.
+    </p>
+        
+        <form>
+            <input type="text" placeholder="Search Movie..." name="movie">
+            <br><br>
+            <button>Enter</button>
+        </form>
+
+        {% if error %}
+
+        <div class="error-box">
+
+        {{ error }}
+
+        </div>
+
+       {% endif %}
+
+    </div>
+    {% if recommendations %}
+
+    
+    
+    {% if recommendations %}
+
+    <h2 class="section-title">
+
+    Recommended Movies
+
+    </h2>
+    {% if selected_movie %}
+
+    <section class="details-section">
+
+    <div class="details-container">
+
+    <div class="poster-section">
+
+    <img
+
+    src="{{ selected_movie.poster }}"
+
+    alt="{{ selected_movie.title }}">
+
+    </div>
+
+    <div class="info-section">
+
+    <h2>
+
+    {{ selected_movie.title }}
+
+    </h2>
+
+    <div class="rating-badge">
+
+    ⭐ {{ selected_movie.rating }}
+
+    </div>
+
+    <p>
+
+    <strong>Genres:</strong>
+
+    {{ selected_movie.genres | join(" • ") }}
+
+    </p>
+
+    <p>
+
+    <strong>Release Year:</strong>
+
+    {{ selected_movie.release_year }}
+
+    </p>
+
+    <p>
+
+    <strong>Runtime:</strong>
+
+    {{ selected_movie.runtime }} min
+
+    </p>
+
+    <p>
+
+    <strong>Language:</strong>
+
+        {{ selected_movie.language }}
+
+        </p>
+
+        <h3>
+
+        Overview
+
+        </h3>
+
+        <p>
+
+        {{ selected_movie.overview }}
+
+        </p>
+
+        </div>
+
+        </div>
+
+        </section>
+
+        {% endif %}
+
+        <div class="movie-container">
+
+        {% for movie in recommendations %}
+
+        <div class="movie-card">
+
+        <img
+        src="{{ movie.poster }}"
+        alt="{{ movie.title }}">
+
+    <h3>{{ movie.title }}</h3>
+
+        <div class="rating">
+
+        ⭐ {{ movie.rating }}
+
+        </div>
+
+        <p class="year">
+
+        📅 {{ movie.release_year }}
+
+        </p>
+
+        <p class="genre">
+
+        🎭 {{ movie.genres | join(" • ") }}
+
+        </p>
+        
+
+        </div>
+
+        {% endfor %}
+
+        </div>
+        {% endif %}
+
+        {% if selected_movie %}
+
+    <section class="cast-section">
+
+    <h2>
+
+    Top Cast
+
+    </h2>
+
+    <div class="cast-container">
+
+    {% for actor in selected_movie.cast %}
+
+    <div class="cast-card">
+
+    {% if actor.photo %}
+
+    <img
+
+    src="{{ actor.photo }}"
+
+    alt="{{ actor.name }}">
+
+    {% endif %}
+
+    <h4>
+
+    {{ actor.name }}
+
+    </h4>
+
+    <p>
+
+    {{ actor.character }}
+
+    </p>
+
+    </div>
+
+    {% endfor %}
+
+    </div>
+
+    </section>
+
+    {% endif %}
+
+        {% if error %}
+
+    <div class="error-box">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+
+    {% endif %}
+
+
+    <script
+    src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+</body>
+</html>

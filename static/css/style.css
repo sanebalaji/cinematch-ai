@@ -1,0 +1,497 @@
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+body{
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.601),
+            rgba(0, 0, 0, 0.601)
+        ),
+        url("../images/hero.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+    background-repeat: no-repeat;
+
+    color: white;
+
+}
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero{
+
+    padding:100px 20px 80px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    position:relative;
+
+}
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+}
+.hero>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
+.hero p{
+
+    font-size:24px;
+
+    color:#b3b3b3;
+
+    margin-bottom:40px;
+
+}
+
+
+/* ===========================
+   SEARCH BAR
+=========================== */
+input{
+
+    width:600px;
+
+    max-width:90%;
+
+    padding:18px 25px;
+
+    border-radius:50px;
+
+    border:none;
+
+    outline:none;
+
+    font-size:18px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+
+}
+button{
+
+    margin-top:25px;
+
+    padding:16px 40px;
+
+    background:#e50914;
+
+    border:none;
+
+    border-radius:50px;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 8px 25px rgba(229,9,20,.4);
+
+}
+button:hover{
+
+    transform:translateY(-3px);
+
+    background:#ff2f3d;
+
+}
+
+h1{
+
+    font-size:64px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    letter-spacing:1px;
+
+}
+h1 span{
+
+    color:#e50914;
+
+}
+
+.section-title{
+
+    font-size:42px;
+
+    margin:60px 0 30px;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+/* ===========================
+   MOVIE CARDS
+=========================== */
+
+.movie-container{
+
+    display:flex;
+
+    gap:30px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    margin-top:50px;
+
+}
+
+.movie-card{
+
+    width:260px;
+
+    background:#1f1f1f;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:0.35s ease;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+
+}
+
+.movie-card:hover{
+
+    transform:translateY(-10px) scale(1.03);
+
+    box-shadow:0 18px 35px rgba(255,0,0,0.25);
+
+}
+
+.movie-card img{
+
+    width:100%;
+
+    height:390px;
+
+    object-fit:cover;
+
+    transition:.35s;
+
+}
+
+.movie-card:hover img{
+
+    transform:scale(1.05);
+
+}
+.movie-card h3{
+
+    padding:18px 18px 5px;
+
+    font-size:28px;
+
+    color:white;
+
+}
+/* ===========================
+   DETAILS SECTION
+=========================== */
+.rating{
+
+    color:#FFD54F;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    padding:0 18px;
+
+}
+.year,
+.genre{
+
+    color:#cccccc;
+
+    padding:5px 18px;
+
+    line-height:1.6;
+
+}
+
+.movie-card p{
+
+    color:#cccccc;
+
+}
+.details-section{
+
+    margin-top:80px;
+
+}
+
+.details-container{
+
+    display:flex;
+
+    gap:50px;
+
+    align-items:flex-start;
+
+}
+
+.poster-section img{
+
+    width:350px;
+
+    border-radius:20px;
+
+}
+
+.info-section{
+
+    flex:1;
+
+}
+
+.info-section h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.rating-badge{
+
+    color:#FFD54F;
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+}
+
+.info-section p{
+
+    line-height:1.8;
+
+    margin-bottom:12px;
+
+}
+/* ===========================
+   TOP CAST
+=========================== */
+.cast-section{
+
+    margin-top:80px;
+
+}
+
+.cast-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.cast-card{
+
+    width:220px;
+
+    background:#1f1f1f;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    transition:.35s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+}
+.cast-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(255,255,255,.08);
+
+}
+
+.cast-card img{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-bottom:20px;
+
+}
+
+.cast-card h4{
+
+    margin-bottom:10px;
+
+}
+
+.cast-card p{
+
+    color:#BBBBBB;
+
+}
+
+.error-box{
+
+    width:500px;
+
+    margin:25px auto;
+
+    background:#7f1d1d;
+
+    color:white;
+
+    padding:18px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+@media (max-width:768px){
+    h1{
+
+    font-size:40px;
+
+}
+input{
+
+    width:90%;
+
+}
+.hero p{
+
+    font-size:18px;
+
+}
+.movie-container{
+
+    justify-content:center;
+
+}
+
+.movie-card{
+
+    width:90%;
+
+    max-width:320px;
+
+}
+.details-container{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+.poster-section img{
+
+    width:280px;
+
+}
+.info-section{
+
+    text-align:center;
+
+}
+.cast-container{
+
+    justify-content:center;
+
+}
+.cast-card{
+
+    width:180px;
+
+}
+
+}
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+}
+button{
+
+    transition:.35s ease;
+
+}
